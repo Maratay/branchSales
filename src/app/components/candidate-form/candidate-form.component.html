@@ -1,0 +1,135 @@
+<div class="form-container">
+  <form [formGroup]="candidateForm" class="example-form" (ngSubmit)="save()">
+    <h2>{{ isEdit ? 'Edit Candidate Form' : 'Candidate Registration Form' }}</h2>
+    <!-- <h2>Candidate Registration Form</h2> -->
+    
+    <mat-form-field class="example-full-width">
+      <input matInput disabled value="ID" />
+    </mat-form-field>
+
+    <p class="text">Job Title</p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter your Job Title" formControlName="jobTitle" />
+    </mat-form-field>
+
+    <p class="text">Name</p>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="First Name" formControlName="fName" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Last Name" formControlName="lName" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <!-- <p class="text">Email</p>
+    <mat-form-field class="example-full-width">
+      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. anyone@gmail.com" formControlName="email"/>
+      @if (emailFormControl.hasError('email') &&
+      !emailFormControl.hasError('required')) {
+      <mat-error>Please enter a valid email address</mat-error>
+      } @if (emailFormControl.hasError('required')) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+      }
+    </mat-form-field> -->
+
+    <p class="text">Email</p>
+    <mat-form-field class="example-full-width">
+      <input type="email" matInput placeholder="Ex: any@gmail.com" formControlName="email"/>
+    </mat-form-field>
+
+    <p class="text">Phone Number</p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Mobile No.</mat-label>
+      <span matTextPrefix>+1 &nbsp;</span>
+      <input type="tel" matInput placeholder="555-555-1234" formControlName="phone"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <p class="text">City</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Ex. San Francisco" formControlName="city"/>
+          </mat-form-field>
+        </td>
+        <td>
+          <p class="text">State</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Ex. California" formControlName="state"/>
+          </mat-form-field>
+        </td>
+        <td>
+          <p class="number">Postal Code</p>
+          <mat-form-field class="example-full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043" formControlName="zipCode"/>
+            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <p class="text">Work Authorization</p>
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Please select" formControlName="workAuth">
+              <mat-option value="USC">USC</mat-option>
+              <mat-option value="GC">GC</mat-option>
+              <mat-option value="GC EAD">GC EAD</mat-option>
+              <mat-option value="H1B">H1B</mat-option>
+              <mat-option value="H4 EAD">H4 EAD</mat-option>
+              <mat-option value="TPS EAD">TPS EAD</mat-option>
+              <mat-option value="OPT EAD">OPT EAD</mat-option>
+              <mat-option value="CPT">CPT</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <p class="text">C2C Rate</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Ex. $0-$100" formControlName="cRate" type="text" min="0" max="1000">
+            <mat-hint align="end">0-1000</mat-hint>
+          </mat-form-field>
+        </td>
+        <td>
+          <p class="text">Relocation Preference</p>
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Please select" formControlName="relocate">
+              <mat-option value="Open">Open</mat-option>
+              <mat-option value="Initial Remote">Initial Remote</mat-option>
+              <mat-option value="Hybrid Onsite">Hybrid Onsite</mat-option>
+              <mat-option value="Remote Only">Remote Only</mat-option>
+              <mat-option value="Others">Others</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p class="text">Marketing Manager</p>
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Please select" formControlName="manager">
+        <mat-option value="Surya Rai">Surya Rai</mat-option>
+        <mat-option value="Suzana Shrestha">Suzana Shrestha</mat-option>
+        <mat-option value="Melina Gurung">Melina Gurung</mat-option>
+        <mat-option value="Radha Reddy">Radha Reddy</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="flex justify-center">
+      @if(isEdit){
+        <button mat-raised-button color="primary">Update</button>
+      }@else {
+        <button mat-raised-button color="primary">Register</button>
+      }
+    </div>
+  </form>
+</div>
